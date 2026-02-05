@@ -1,16 +1,30 @@
-# React + Vite
+# 📦 React Mini Context Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A foundational React application that demonstrates how to manage **Global State** using the **Context API**. This project was built to understand how to solve "Prop Drilling" by sharing data directly between unconnected components.
 
-Currently, two official plugins are available:
+## 🚀 Concept
+In a standard React app, data flows from Parent → Child via props. This becomes a problem when deep components need data from the top (Prop Drilling).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**This project solves that by:**
+1. Creating a central "Data Warehouse" (Context).
+2. Creating a "Provider" to wrap the application.
+3. Allowing components (`Login` and `Profile`) to access data directly, bypassing their parents.
 
-## React Compiler
+## 🛠️ Tech Stack
+* **React** (Vite)
+* **Context API** (State Management)
+* **CSS** (Basic Styling)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📂 Project Structure
+The core logic resides in the `context` folder:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```text
+src/
+├── context/
+│   ├── UserContext.js          # 1. Creates the Context (The "Plan")
+│   └── UserContextProvider.jsx # 2. Provides the Data (The "Tank")
+├── components/
+│   ├── Login.jsx               # 3. Sends data (Writes to Context)
+│   └── Profile.jsx             # 4. Receives data (Reads from Context)
+├── App.jsx
+└── main.jsx
